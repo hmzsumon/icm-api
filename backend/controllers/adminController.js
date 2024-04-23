@@ -215,3 +215,12 @@ exports.deductMoneyFromAdmin = catchAsyncErrors(async (req, res, next) => {
 		message: 'Money deducted successfully',
 	});
 });
+
+// get all users
+exports.getAllUsers = catchAsyncErrors(async (req, res, next) => {
+	const users = await User.find({ role: 'user' });
+	res.status(200).json({
+		success: true,
+		users,
+	});
+});

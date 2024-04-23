@@ -6,6 +6,7 @@ const {
 	adminLogin,
 	addMoneyFromAdmin,
 	deductMoneyFromAdmin,
+	getAllUsers,
 } = require('../controllers/adminController');
 
 router.route('/admin/login').post(adminLogin);
@@ -17,5 +18,8 @@ router
 router
 	.route('/admin/deduct_money')
 	.put(isAuthenticatedUser, authorizeRoles('admin'), deductMoneyFromAdmin);
+
+// get all users
+router.route('/users').get(getAllUsers);
 
 module.exports = router;
